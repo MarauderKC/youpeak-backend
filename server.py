@@ -25,18 +25,22 @@ YDL_OPTS = {
     "socket_timeout": 15,
     "retries": 5,
 
-    "http_headers": {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/120.0.0.0 Safari/537.36"
-        ),
-        "Accept-Language": "en-US,en;q=0.9",
+    # ✅ ANDROID CLIENT (CRITICAL FIX)
+    "extractor_args": {
+        "youtube": {
+            "player_client": ["android"],
+            "player_skip": ["webpage", "configs"],
+        }
     },
 
-    # 🚫 DO NOT FORCE FORMAT
+    "http_headers": {
+        "User-Agent": "com.google.android.youtube/18.11.34 (Linux; U; Android 13)",
+        "Accept-Language": "en-US",
+    },
+
     "format": "best",
 }
+
 
 
 @app.get("/api/stream/{video_id}")
