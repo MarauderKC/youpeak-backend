@@ -4,6 +4,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import yt_dlp
 
 app = FastAPI()
+@app.get("/")
+def root():
+    return {"status": "ok"}
+
 
 # Allow access from anywhere (Android app, tunnel, browser)
 app.add_middleware(
