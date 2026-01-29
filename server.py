@@ -17,7 +17,7 @@ app.add_middleware(
 YDL_OPTS = {
     "quiet": True,
     "no_warnings": True,
-    "source_address": "0.0.0.0",  # Force IPv4
+    "source_address": "0.0.0.0",
     "socket_timeout": 15,
     "retries": 5,
 
@@ -30,13 +30,10 @@ YDL_OPTS = {
         "Accept-Language": "en-US,en;q=0.9",
     },
 
-    "extractor_args": {
-        "youtube": {
-            "player_client": ["web"],
-            "player_skip": ["configs"],
-        }
-    },
+    # 🚫 DO NOT FORCE FORMAT
+    "format": "best",
 }
+
 
 @app.get("/api/stream/{video_id}")
 async def get_stream(video_id: str):
@@ -90,3 +87,4 @@ def extract_info(url: str):
             "audio": None,
         },
     }
+
